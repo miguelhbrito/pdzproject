@@ -5,10 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-react -f Dockerfile.dev .
+  - docker build -t pdzproject -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true docker-react npm run test
+  - docker run -e CI=true pdzproject npm run test
 
 deploy:
   provider: elasticbeanstalk
@@ -19,5 +19,5 @@ deploy:
   bucket_path: "docker"
   on:
     branch: master
-access_key_id: $AWS_ACCESS_KEY
-secret_access_key: $AWS_SECRET_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
